@@ -6,5 +6,7 @@ def homepage(request):
   return render(request, 'index/homepage.html')
 def aboutpage(request):
   return render(request, 'index/aboutpage.html')
+def contactpage(request):
+  return render(request, 'index/contactpage.html')
 def vision_missionpage(request):
   return render(request, 'index/homepage.html')

@@ -1,0 +1,289 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+<!-- ===================================== -->
+<!--        Ailixir Global Contact Page     -->
+<!-- ===================================== -->
+
+<div class="nk-content">
+  <div class="container-fluid">
+    <div class="nk-content-inner">
+      <div class="nk-content-body">
+
+        <!-- Page Header -->
+        <div class="nk-block-head nk-block-head-sm">
+          <div class="nk-block-between">
+            <div class="nk-block-head-content">
+              <h3 class="nk-block-title page-title">Contact Ailixir Global</h3>
+              <p class="lead text-soft">
+                We value your questions, feedback, and partnership opportunities.  
+                Please reach out using the form or details below — our team will respond promptly.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Information & Form -->
+        <div class="nk-block">
+          <div class="row g-gs align-items-stretch">
+
+            <!-- Company Information Card -->
+            <div class="col-lg-4">
+              <div class="card card-bordered h-100 shadow-sm">
+                <div class="card-inner">
+                  <h5 class="title mb-3">Corporate Office</h5>
+                  <ul class="gy-3 list-unstyled">
+                    <li class="d-flex align-items-start">
+                      <em class="icon ni ni-home fs-20 me-2 text-primary"></em>
+                      <span>Wudil<br>Kano, Nigeria</span>
+                    </li>
+                    <li class="d-flex align-items-start">
+                      <em class="icon ni ni-call fs-20 me-2 text-primary"></em>
+                      <span>+234 814 464 8700<br>+234 708 033 2077</span>
+                    </li>
+                    <li class="d-flex align-items-start">
+                      <em class="icon ni ni-mail fs-20 me-2 text-primary"></em>
+                      <span>
+                        <a href="mailto:info@ailixirglobal.com" class="link link-primary">info@ailixirglobal.com</a><br>
+                        <a href="mailto:support@ailixirglobal.com" class="link link-primary">support@ailixirglobal.com</a>
+                      </span>
+                    </li>
+                    <li class="d-flex align-items-start">
+                      <em class="icon ni ni-clock fs-20 me-2 text-primary"></em>
+                      <span>Monday – Friday<br>8:00 AM – 5:00 PM (WAT)</span>
+                    </li>
+                  </ul>
+
+                  <div class="mt-4">
+                    <h6 class="text-dark fw-bold mb-2">Follow Our Channels</h6>
+                    <ul class="d-flex gap g-2">
+                      <li><a href="#" class="btn btn-icon btn-sm btn-facebook"><em class="icon ni ni-facebook-f"></em></a></li>
+                      <li><a href="#" class="btn btn-icon btn-sm btn-info"><em class="icon ni ni-twitter"></em></a></li>
+                      <li><a href="#" class="btn btn-icon btn-sm btn-danger"><em class="icon ni ni-instagram"></em></a></li>
+                      <li><a href="#" class="btn btn-icon btn-sm btn-secondary"><em class="icon ni ni-linkedin"></em></a></li>
+                    </ul>
+                  </div>
+
+                  <hr class="my-4">
+
+                  <h6 class="text-dark fw-bold mb-2">Customer Commitment</h6>
+                  <p class="text-soft fs-13 mb-0">
+                    Ailixir Global is committed to transparency, accessibility, and excellence in healthcare delivery.
+                    Every inquiry is handled with professionalism and confidentiality.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Form Card -->
+            <div class="col-lg-8">
+              <div class="card card-bordered h-100 shadow-sm">
+                <div class="card-inner">
+                  <h5 class="title mb-3">Send Us a Message</h5>
+                  <p class="text-soft fs-14 mb-4">Fill out the form below and our team will get back to you as soon as possible.</p>
+
+                  <form action="#" method="post" class="form-validate is-alter" id="contactForm">
+                    <div class="row g-4">
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="form-label" for="name">Full Name <span class="text-danger">*</span></label>
+                          <div class="form-control-wrap">
+                            <input type="text" class="form-control form-control-lg" id="name" name="name" required placeholder="John Doe">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="form-label" for="email">Email Address <span class="text-danger">*</span></label>
+                          <div class="form-control-wrap">
+                            <input type="email" class="form-control form-control-lg" id="email" name="email" required placeholder="you@example.com">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="form-label" for="phone">Phone Number</label>
+                          <div class="form-control-wrap">
+                            <input type="text" class="form-control form-control-lg" id="phone" name="phone" placeholder="+234 801 234 5678">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="form-label" for="subject">Subject</label>
+                          <div class="form-control-wrap">
+                            <input type="text" class="form-control form-control-lg" id="subject" name="subject" placeholder="Inquiry type...">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label class="form-label" for="message">Your Message <span class="text-danger">*</span></label>
+                          <div class="form-control-wrap">
+                            <textarea class="form-control no-resize form-control-lg" id="message" name="message" rows="5" required placeholder="Write your message..."></textarea>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-12 text-end">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                          <em class="icon ni ni-send"></em> <span>Send Message</span>
+                        </button>
+                      </div>
+
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- Google Map -->
+            <div class="col-12 mt-4">
+              <div class="card card-bordered">
+                <div class="card-inner p-0">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=wudil kano"
+                    width="100%" height="380" style="border:0;" allowfullscreen="" loading="lazy">
+                  </iframe>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+</section>
+{% endblock content %}
+<div class="nk-content">
+  <div class="container-fluid">
+    <div class="nk-content-inner">
+      <div class="nk-content-body">
+        <div class="nk-block-head nk-block-head-sm">
+          <div class="nk-block-between">
+            <div class="nk-block-head-content">
+              <h3 class="nk-block-title page-title">Contact Us</h3>
+              <p class="text-soft">We’re here to help. Get in touch with Ailixir Global today.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Info Section -->
+        <div class="nk-block">
+          <div class="row g-gs">
+            <div class="col-lg-5">
+              <div class="card card-bordered h-100">
+                <div class="card-inner">
+                  <h5 class="title">Company Information</h5>
+                  <ul class="gy-3">
+                    <li>
+                      <em class="icon ni ni-home"></em>
+                      <span>Ailixir Global<br>123 Pharma Street, Lagos, Nigeria</span>
+                    </li>
+                    <li>
+                      <em class="icon ni ni-call"></em>
+                      <span>+234 701 234 5678</span>
+                    </li>
+                    <li>
+                      <em class="icon ni ni-mail"></em>
+                      <span>info@ailixirglobal.com</span>
+                    </li>
+                    <li>
+                      <em class="icon ni ni-clock"></em>
+                      <span>Mon–Fri: 8:00 AM – 5:00 PM</span>
+                    </li>
+                  </ul>
+
+                  <div class="mt-4">
+                    <h6>Follow Us</h6>
+                    <ul class="d-flex gap g-2">
+                      <li><a href="#" class="btn btn-icon btn-sm btn-primary"><em class="icon ni ni-facebook-f"></em></a></li>
+                      <li><a href="#" class="btn btn-icon btn-sm btn-info"><em class="icon ni ni-twitter"></em></a></li>
+                      <li><a href="#" class="btn btn-icon btn-sm btn-danger"><em class="icon ni ni-instagram"></em></a></li>
+                      <li><a href="#" class="btn btn-icon btn-sm btn-secondary"><em class="icon ni ni-linkedin"></em></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-lg-7">
+              <div class="card card-bordered h-100">
+                <div class="card-inner">
+                  <h5 class="title mb-3">Send Us a Message</h5>
+                  <form action="#" method="post" class="form-validate is-alter" id="contactForm">
+                    <div class="row g-4">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="form-label" for="name">Full Name</label>
+                          <div class="form-control-wrap">
+                            <input type="text" class="form-control" id="name" name="name" required placeholder="Enter your full name">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="form-label" for="email">Email Address</label>
+                          <div class="form-control-wrap">
+                            <input type="email" class="form-control" id="email" name="email" required placeholder="Enter your email">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label class="form-label" for="subject">Subject</label>
+                          <div class="form-control-wrap">
+                            <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter subject">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label class="form-label" for="message">Message</label>
+                          <div class="form-control-wrap">
+                            <textarea class="form-control no-resize" id="message" name="message" rows="5" placeholder="Type your message here..."></textarea>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-primary">Send Message</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- Optional Map -->
+            <div class="col-12">
+              <div class="card card-bordered">
+                <div class="card-inner p-0">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.8385472813653!2d3.379205015266322!3d6.524379525096937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf4d2b96e1b4b%3A0xf1b2a9e18c27d8b8!2sLagos%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1685974745012!5m2!1sen!2sng"
+                    width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy">
+                  </iframe>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

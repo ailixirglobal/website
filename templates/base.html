@@ -1,36 +1,64 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="zxx" class="js">
-
+<html lang="en" class="js">
 <head>
-    <base href="../">
     <meta charset="utf-8">
-    <meta name="author" content="Softnio">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A powerful and conceptual apps base dashboard template that especially build for developers and programmers.">
-    <!-- Fav Icon  -->
-    <link rel="shortcut icon" href="./images/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Primary Meta Tags -->
+    <title>Ailixir Global — Trusted Pharmaceutical & Healthcare Solutions</title>
+    <meta name="title" content="Ailixir Global — Trusted Pharmaceutical & Healthcare Solutions">
+    <meta name="description" content="Ailixir Global is a leading pharmaceutical company dedicated to improving lives through innovative healthcare products, medical solutions, and quality-driven drug distribution worldwide.">
+    
+    <!-- SEO Keywords -->
+    <meta name="keywords" content="Ailixir Global, pharmaceutical company, healthcare, medicine, drug manufacturing, medical distribution, healthcare innovation, pharmaceutical Nigeria, global pharma solutions">
+    
+    <!-- Author & Robots -->
+    <meta name="author" content="Ailixir Global">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ailixirglobal.com/">
+    <meta property="og:title" content="Ailixir Global — Trusted Pharmaceutical & Healthcare Solutions">
+    <meta property="og:description" content="Delivering innovative and reliable healthcare products that enhance quality of life worldwide.">
+    <meta property="og:image" content="https://ailixirglobal.com/static/images/ailixir-banner.jpg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://ailixirglobal.com/">
+    <meta name="twitter:title" content="Ailixir Global — Trusted Pharmaceutical & Healthcare Solutions">
+    <meta name="twitter:description" content="Delivering innovative and reliable healthcare products that enhance quality of life worldwide.">
+    <meta name="twitter:image" content="https://ailixirglobal.com/static/images/ailixir-banner.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
     <!-- Page Title  -->
-    <title>Ailixir Global Limited</title>
+    
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{% static 'assets/css/dashlite.css' %}">
     <link id="skin-default" rel="stylesheet" href="{% static 'assets/css/theme.css' %}">
+    <style>
+      .text-soft{
+        color: black !important;
+      }
+    </style>
 </head>
 
 <body class="nk-body bg-white npc-landing ">
     <div class="nk-app-root">
         <!-- main @s -->
         <div class="nk-main ">
-            <header class="header has-header-main-s1 bg-dark" id="home">
+              <header class="header header-32 has-header-main-s1 bg-dark" id="home">
                 <div class="header-main header-main-s1 is-sticky is-transparent on-dark">
                     <div class="container header-container">
                         <div class="header-wrap">
                             <div class="header-logo">
-                                <a href="/" class="logo-link">
-                                  <span class="brandname h1 text-light ms-1">Ailixir Global</span>
-                                    <!-- <img class="logo-light logo-img" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo"> 
+                              <a href="/" class="logo-link">
+                                  <span class="brandname h1 text-light">Ailixir</span>
+                                    <!-- <img class="logo-light logo-img" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
                                     <img class="logo-dark logo-img" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark"> -->
                                 </a>
+                                
                             </div>
                             <div class="header-toggle">
                                 <button class="menu-toggler" data-target="mainNav">
@@ -40,65 +68,41 @@
                             </div><!-- .header-nav-toggle -->
                             <nav class="header-menu" data-content="mainNav">
                                 <ul class="menu-list ms-lg-auto">
-                                    
-                                    <li class="menu-item"><a href="" class="menu-link nav-link">Home</a></li>
-                                    <li class="menu-item"><a href="about-us" class="menu-link nav-link">About Us</a></li>
-                                    <li class="menu-item"><a href="contact-us" class="menu-link nav-link">Contact Us</a></li>
-                                    <li class="menu-item"><a href="#feature" class="menu-link nav-link">Features</a></li>
-                                    <li class="menu-item"><a href="#package" class="menu-link nav-link">Packages</a></li>
-                                    <li class="menu-item"><a href="#team" class="menu-link nav-link">Team</a></li>
-                                    <li class="menu-item"><a href="#reviews" class="menu-link nav-link">Reviews</a></li>
+                                    <li class="menu-item"><a href="{% url 'home' %}" class="menu-link nav-link">Home</a></li>
+                                    <li class="menu-item"><a href="{% url 'about' %}" class="menu-link nav-link">About Us</a></li>
+                                    <li class="menu-item"><a href="{% url 'contact' %}" class="menu-link nav-link">Contact Us</a></li>
                                 </ul>
                             </nav><!-- .nk-nav-menu -->
                         </div><!-- .header-warp-->
                     </div><!-- .container-->
                 </div><!-- .header-main-->
-                <div class="header-content my-auto py-6 is-dark">
-                    <div class="container mt-n4 mt-lg-0">
-                        <div class="row flex-lg-row-reverse align-items-center justify-content-between g-gs">
-                            <div class="col-lg-6 mb-lg-0">
-                                <div class="header-play text-lg-center">
-                                    <a class="play popup-video" href="https://www.youtube.com/watch?v=SSo_EIwHSd4">
-                                        <div class="styled-icon styled-icon-6x styled-icon-s5 text-warning">
-                                            <svg x="0px" y="0px" viewBox="0 0 512 512" style="fill:currentColor" xml:space="preserve">
-                                                <path d="M436.2,178.3c-7.5-4.7-17.4-2.4-22.1,5.1c-4.7,7.5-2.4,17.4,5.1,22.1c17.5,10.9,28,29.8,28,50.4s-10.5,39.5-28,50.4
-	L155.7,470.7c-18.6,11.6-41.1,12.2-60.3,1.5c-19.2-10.6-30.6-30.1-30.6-52V91.7c0-21.9,11.4-41.3,30.6-52
-	c19.1-10.6,41.7-10.1,60.3,1.5l153.4,95.6c7.5,4.7,17.4,2.4,22.1-5.1c4.7-7.5,2.4-17.4-5.1-22.1L172.7,14
-	c-28.6-17.9-63.3-18.7-92.9-2.4C50.3,28.1,32.7,58,32.7,91.7v328.6c0,33.7,17.6,63.7,47.1,80c14.1,7.8,29.3,11.7,44.5,11.7
-	c16.7,0,33.4-4.7,48.4-14l263.5-164.3c27-16.8,43.1-45.9,43.1-77.7S463.2,195.2,436.2,178.3z" />
-                                            </svg>
-                                        </div>
-                                        <div class="play-text">2:58 minutes</div>
-                                    </a>
-                                </div>
-                            </div><!-- .col- -->
-                            <div class="col-lg-6 col-md-10">
+                <div class="header-content py-6 is-dark mt-lg-n1 mt-n3">
+                    <div class="container">
+                        <div class="row flex-row-reverse justify-content-center text-center g-gs">
+                            <div class="col-lg-6 col-md-7">
                                 <div class="header-caption">
-                                    <div class="header-rating rating">
-                                        <ul class="rating-stars">
-                                            <li><em class="icon ni ni-star-fill"></em></li>
-                                            <li><em class="icon ni ni-star-fill"></em></li>
-                                            <li><em class="icon ni ni-star-fill"></em></li>
-                                            <li><em class="icon ni ni-star-fill"></em></li>
-                                            <li><em class="icon ni ni-star-fill"></em></li>
-                                        </ul>
-                                        <div class="rating-text">14,252 reviews</div>
-                                    </div>
-                                    <h1 class="header-title fw-medium">Stay Healthy by using our products.</h1>
-                                    <div class="header-text">
-                                      <p>“Ailixir is more than a company; it is a movement to combine the wisdom of nature with the
-power of AI and modern medicine. Every small step we take today sets the foundation for
-a healthier and smarter world tomorrow.” – <i>Usman Saminu Muhammad</i></p>
-                                    </div>
+                                    <h1 class="header-title">Empowering Global Health Through Innovation.</h1>
+                                    <p>Ailixir Global is a trusted pharmaceutical company dedicated to delivering innovative healthcare products, medical solutions, and world-class distribution services that improve quality of life across communities.</p>
+                                    <ul class="header-action btns-inline py-3">
+                                        <li>
+                                            <a href="{% url 'contact' %}" class="btn btn-primary btn-lg"><span>Contact Us</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="btn btn-danger btn-lg"><span>View our Products</span></a>
+                                        </li>
+                                    </ul><!-- .header-action -->
+                                    <ul class="header-icon list-inline pt-1">
+                                        <li><img class="h-20px" src="{% static 'images/images.png' %}" alt=""></li>
+                                        <li><img class="h-20px" src="{% static 'images/images (1).png' %}" alt=""></li>
+                                        <li><img class="h-20px" src="{% static 'images/images (2).png' %}" alt=""></li>
+                                        <li><img class="h-20px" src="{% static 'images/images (3).png' %}" alt=""></li>
+                                      </ul>
                                 </div><!-- .header-caption -->
                             </div><!-- .col -->
                         </div><!-- .row -->
                     </div><!-- .container -->
                 </div><!-- .header-content -->
-                <div class="bg-image bg-overlay after-bg-dark after-opacity-95">
-                    <img src="{% static 'images/bg/a.jpg' %}" alt="">
-                </div>
-            </header><!-- .header -->
+            </header>
             {% block content %}
             <section class="section section-service pb-0" id="feature">
                 <div class="container">
@@ -792,7 +796,7 @@ a healthier and smarter world tomorrow.” – <i>Usman Saminu Muhammad</i></p>
                     <div class="row g-gs justify-content-between py-4 py-md-6">
                         <div class="col-lg-4 col-md-6">
                             <div class="widget widget-about mt-n2">
-                                <a href="html/index.html" class="logo-link">
+                                <a href="/" class="logo-link">
                                   <span class="h1 text-light">Ailixir Global Limited</span>
                                     <!-- <img class="logo-light logo-img" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
                                     <img class="logo-dark logo-img" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark"> -->

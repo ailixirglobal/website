@@ -1,6 +1,401 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<!-- ========================================= -->
+<!--           AILIXIR GLOBAL HOMEPAGE          -->
+<!-- ========================================= -->
+
+<div class="nk-content">
+  <div class="container-fluid">
+    <div class="nk-content-inner">
+      <div class="nk-content-body">
+
+        
+        <!-- ===================== -->
+        <!-- ABOUT SECTION -->
+        <!-- ===================== -->
+        <section class="nk-block py-6">
+          <div class="container">
+            <div class="row align-items-center g-gs">
+              <div class="col-lg-6">
+                <img src="/static/images/images (1).jpg" alt="About Ailixir Global"
+                  class="img-fluid rounded shadow-sm">
+              </div>
+              <div class="col-lg-6">
+                <div class="nk-block-content">
+                  <h2 class="fw-bold mb-3">About Ailixir Global</h2>
+                  <p class="text-soft fs-15">
+                    At <strong>Ailixir Global</strong>, we believe that healthcare should be accessible,
+                    reliable, and sustainable. Founded with a commitment to excellence,
+                    our company specializes in the production, distribution, and innovation
+                    of high-quality pharmaceutical and healthcare products that meet
+                    international safety and efficacy standards.
+                  </p>
+                  <p class="text-soft fs-15">
+                    Our operations are guided by integrity, research, and partnerships
+                    with global healthcare organizations. From essential medicines to
+                    advanced medical devices, we are driven by one goal — to enhance life.
+                  </p>
+                  <a href="/about" class="btn btn-outline-primary btn-md mt-3">
+                    <em class="icon ni ni-info"></em> <span>Learn More</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== -->
+        <!-- SERVICES SECTION -->
+        <!-- ===================== -->
+        <section class="nk-block bg-light py-6">
+          <div class="container">
+            <div class="text-center mb-5">
+              <h2 class="fw-bold">Our Core Services</h2>
+              <p class="text-soft">Comprehensive pharmaceutical and healthcare solutions built on trust, innovation, and quality.</p>
+            </div>
+
+            <div class="row g-gs">
+              <!-- Service 1 -->
+              <div class="col-lg-4 col-md-6">
+                <div class="card card-bordered h-100 shadow-sm text-center">
+                  <div class="card-inner">
+                    <em class="icon ni ni-react fs-1mb-3"></em>
+                    <h5 class="fw-bold mb-2">Pharmaceutical Manufacturing</h5>
+                    <p class="text-soft fs-14 mb-0">
+                      Production of safe, effective, and affordable medicines that comply
+                      with WHO and NAFDAC standards.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Service 2 -->
+              <div class="col-lg-4 col-md-6">
+                <div class="card card-bordered h-100 shadow-sm text-center">
+                  <div class="card-inner">
+                    <em class="icon ni ni-globe fs-1 mb-3"></em>
+                    <h5 class="fw-bold mb-2">Global Distribution</h5>
+                    <p class="text-soft fs-14 mb-0">
+                      A seamless supply chain network ensuring timely and efficient delivery
+                      of pharmaceutical products across regions.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Service 3 -->
+              <div class="col-lg-4 col-md-6">
+                <div class="card card-bordered h-100 shadow-sm text-center">
+                  <div class="card-inner">
+                    <em class="icon ni ni-heart fs-1 mb-3"></em>
+                    <h5 class="fw-bold mb-2">Healthcare Partnerships</h5>
+                    <p class="text-soft fs-14 mb-0">
+                      Collaborating with hospitals, pharmacies, and NGOs to enhance access
+                      to quality healthcare and medical support services.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== -->
+        <!-- QUALITY & CTA SECTION -->
+        <!-- ===================== -->
+        <section class="nk-block py-6">
+          <div class="container">
+            <div class="row align-items-center g-gs">
+              <div class="col-lg-6">
+                <h2 class="fw-bold mb-3">Commitment to Quality</h2>
+                <p class="text-soft fs-15 mb-3">
+                  Quality is the foundation of everything we do at Ailixir Global.
+                  From sourcing raw materials to product packaging and delivery,
+                  our processes are guided by the strictest global standards.
+                </p>
+                <ul class="list list-checked text-soft fs-15">
+                  <li>Certified production and distribution processes</li>
+                  <li>Compliance with WHO, NAFDAC, and ISO standards</li>
+                  <li>Dedicated quality assurance and control teams</li>
+                  <li>Commitment to continuous improvement and innovation</li>
+                </ul>
+                <a href="/products" class="btn btn-primary btn-md mt-3">
+                  <em class="icon ni ni-cart"></em> <span>Explore Our Products</span>
+                </a>
+              </div>
+
+              <div class="col-lg-6 text-center">
+                <img src="/static/images/images.jpg" alt="Quality Control"
+                  class="img-fluid rounded shadow-sm">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== -->
+        <!-- CONTACT SECTION -->
+        <!-- ===================== -->
+        <section class="nk-block bg-light py-6">
+          <div class="container">
+            <div class="text-center mb-5">
+              <h2 class="fw-bold">Get In Touch</h2>
+              <p class="text-soft fs-15">
+                Have a question, partnership request, or product inquiry?
+                We’re ready to hear from you.
+              </p>
+            </div>
+
+            <div class="row g-gs justify-content-center">
+              <div class="col-lg-8">
+                <form action="/contact/submit" method="POST" class="card card-bordered shadow-sm p-4 bg-white rounded-3">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-label" for="name">Full Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-label" for="email">Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-label" for="phone">Phone Number</label>
+                        <input type="text" class="form-control" id="phone" name="phone" placeholder="+234 80 000 0000" required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-label" for="subject">Subject</label>
+                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Inquiry or Feedback" required>
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label class="form-label" for="message">Message</label>
+                        <textarea class="form-control" id="message" name="message" rows="4" placeholder="Write your message here..." required></textarea>
+                      </div>
+                    </div>
+
+                    <div class="col-12 text-center">
+                      <button type="submit" class="btn btn-primary btn-lg">
+                        <em class="icon ni ni-send"></em> <span>Send Message</span>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+<div class="nk-content">
+  <div class="container-fluid">
+    <div class="nk-content-inner">
+      <div class="nk-content-body">
+
+        <!-- Page Header -->
+        <div class="nk-block-head nk-block-head-sm text-center mb-4">
+          <h2 class="nk-block-title fw-bold">Our Products & Services</h2>
+          <p class="lead text-soft">
+            Delivering reliable healthcare solutions through innovation, quality, and global standards.
+          </p>
+        </div>
+
+        <!-- Product Categories -->
+        <div class="nk-block mb-5">
+          <div class="row g-gs">
+
+            <!-- Product Category 1 -->
+            <div class="col-lg-4 col-md-6">
+              <div class="card card-bordered shadow-sm h-100">
+                <div class="card-inner text-center">
+                  <img src="/static/images/products/antibiotics.jpg" alt="Antibiotics" class="img-fluid rounded mb-3" style="max-height:180px; object-fit:cover;">
+                  <h5 class="fw-bold mb-2">Antibiotics & Antimicrobials</h5>
+                  <p class="text-soft fs-14">
+                    High-quality antibiotics designed to fight bacterial infections effectively.  
+                    WHO-approved and quality-tested for safety and potency.
+                  </p>
+                  <a href="#" class="btn btn-outline-primary btn-sm mt-2">Learn More</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Category 2 -->
+            <div class="col-lg-4 col-md-6">
+              <div class="card card-bordered shadow-sm h-100">
+                <div class="card-inner text-center">
+                  <img src="/static/images/products/analgesics.jpg" alt="Pain Relief" class="img-fluid rounded mb-3" style="max-height:180px; object-fit:cover;">
+                  <h5 class="fw-bold mb-2">Analgesics & Pain Relief</h5>
+                  <p class="text-soft fs-14">
+                    A range of pain management solutions — tablets, capsules, and injections  
+                    developed for fast, safe, and lasting relief.
+                  </p>
+                  <a href="#" class="btn btn-outline-primary btn-sm mt-2">Learn More</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Category 3 -->
+            <div class="col-lg-4 col-md-6">
+              <div class="card card-bordered shadow-sm h-100">
+                <div class="card-inner text-center">
+                  <img src="/static/images/products/vitamins.jpg" alt="Vitamins" class="img-fluid rounded mb-3" style="max-height:180px; object-fit:cover;">
+                  <h5 class="fw-bold mb-2">Vitamins & Supplements</h5>
+                  <p class="text-soft fs-14">
+                    Nutritional products designed to support immunity, vitality, and overall wellbeing.  
+                    Trusted by healthcare professionals globally.
+                  </p>
+                  <a href="#" class="btn btn-outline-primary btn-sm mt-2">Learn More</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Category 4 -->
+            <div class="col-lg-4 col-md-6">
+              <div class="card card-bordered shadow-sm h-100">
+                <div class="card-inner text-center">
+                  <img src="/static/images/products/injectables.jpg" alt="Injectables" class="img-fluid rounded mb-3" style="max-height:180px; object-fit:cover;">
+                  <h5 class="fw-bold mb-2">Injectable Medicines</h5>
+                  <p class="text-soft fs-14">
+                    Sterile, safe, and precisely formulated injectables for hospitals and healthcare institutions.
+                    Quality assured for clinical use.
+                  </p>
+                  <a href="#" class="btn btn-outline-primary btn-sm mt-2">Learn More</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Category 5 -->
+            <div class="col-lg-4 col-md-6">
+              <div class="card card-bordered shadow-sm h-100">
+                <div class="card-inner text-center">
+                  <img src="/static/images/products/antimalarial.jpg" alt="Antimalarial Drugs" class="img-fluid rounded mb-3" style="max-height:180px; object-fit:cover;">
+                  <h5 class="fw-bold mb-2">Antimalarial Drugs</h5>
+                  <p class="text-soft fs-14">
+                    Effective treatments and preventive therapies for malaria,
+                    tailored for tropical regions and endorsed by global health bodies.
+                  </p>
+                  <a href="#" class="btn btn-outline-primary btn-sm mt-2">Learn More</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Category 6 -->
+            <div class="col-lg-4 col-md-6">
+              <div class="card card-bordered shadow-sm h-100">
+                <div class="card-inner text-center">
+                  <img src="/static/images/products/medical-equipment.jpg" alt="Medical Equipment" class="img-fluid rounded mb-3" style="max-height:180px; object-fit:cover;">
+                  <h5 class="fw-bold mb-2">Medical Devices & Equipment</h5>
+                  <p class="text-soft fs-14">
+                    Distribution of hospital-grade equipment and diagnostic tools  
+                    ensuring precision and durability in medical practice.
+                  </p>
+                  <a href="#" class="btn btn-outline-primary btn-sm mt-2">Learn More</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Services Section -->
+        <div class="nk-block mb-5">
+          <div class="nk-block-head text-center mb-4">
+            <h3 class="fw-bold">Our Professional Services</h3>
+            <p class="text-soft">Beyond products — we provide integrated healthcare and pharmaceutical solutions.</p>
+          </div>
+
+          <div class="row g-gs">
+            <div class="col-lg-6">
+              <div class="card card-bordered h-100 shadow-sm">
+                <div class="card-inner d-flex align-items-start">
+                  <em class="icon ni ni-lab bg-primary text-white fs-20 p-2 rounded-circle me-3"></em>
+                  <div>
+                    <h6 class="fw-bold mb-1">Pharmaceutical Research & Development</h6>
+                    <p class="text-soft fs-14 mb-0">
+                      Continuous research focused on discovering innovative therapies, formulations, and delivery systems
+                      that improve treatment outcomes.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="card card-bordered h-100 shadow-sm">
+                <div class="card-inner d-flex align-items-start">
+                  <em class="icon ni ni-globe bg-success text-white fs-20 p-2 rounded-circle me-3"></em>
+                  <div>
+                    <h6 class="fw-bold mb-1">Global Pharmaceutical Distribution</h6>
+                    <p class="text-soft fs-14 mb-0">
+                      Seamless and safe distribution networks ensuring timely delivery of medical products across regions.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="card card-bordered h-100 shadow-sm">
+                <div class="card-inner d-flex align-items-start">
+                  <em class="icon ni ni-heart bg-info text-white fs-20 p-2 rounded-circle me-3"></em>
+                  <div>
+                    <h6 class="fw-bold mb-1">Healthcare Partnerships</h6>
+                    <p class="text-soft fs-14 mb-0">
+                      We collaborate with hospitals, pharmacies, and NGOs to advance healthcare access and service delivery.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="card card-bordered h-100 shadow-sm">
+                <div class="card-inner d-flex align-items-start">
+                  <em class="icon ni ni-briefcase bg-warning text-white fs-20 p-2 rounded-circle me-3"></em>
+                  <div>
+                    <h6 class="fw-bold mb-1">Regulatory & Quality Consultancy</h6>
+                    <p class="text-soft fs-14 mb-0">
+                      Advisory services ensuring that every product complies with NAFDAC, WHO, and international health standards.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="nk-block">
+          <div class="card bg-primary text-white text-center border-0 shadow-sm">
+            <div class="card-inner py-5 px-4">
+              <h3 class="fw-bold mb-3">Interested in Our Products or Services?</h3>
+              <p class="lead mb-4">Partner with Ailixir Global to access world-class healthcare and pharmaceutical solutions.</p>
+              <a href="/contact" class="btn btn-light btn-lg">
+                <em class="icon ni ni-send"></em> <span>Contact Our Team</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
 <section class="section">
   <div class="container">
 
@@ -233,4 +628,3 @@
                     </div><!-- .row -->
                 </div><!-- .container -->
 </section><!-- .section -->
-{% endblock content %}
