@@ -802,11 +802,12 @@
                                     <img class="logo-dark logo-img" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark"> -->
                                 </a>
                                 <p>
-                                  <form class="form-validation">
+                                  <form method="post" action="{% url 'subscribe' %}" class="form-validation">
+                                    {% csrf_token %}
                                     <h6>Subscribe to our newsletter and be part of the health revolution.</h6>
                                     <div class="form-group">
                                         <div class="form-control-wrap">
-                                            <input type="email" class="form-control" id="default-01" placeholder="example@abc.xyz" required>
+                                            <input type="email" name="email" class="form-control" placeholder="example@abc.xyz" required>
                                         </div>
                                         <button class="mt-1 btn btn-primary">Subscribe</button>
                                     </div>
