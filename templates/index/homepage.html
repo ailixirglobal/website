@@ -36,7 +36,7 @@
                     with global healthcare organizations. From essential medicines to
                     advanced medical devices, we are driven by one goal — to enhance life.
                   </p>
-                  <a href="/about" class="btn btn-outline-primary btn-md mt-3">
+                  <a href="{% url 'about' %}" class="btn btn-outline-primary btn-md mt-3">
                     <em class="icon ni ni-info"></em> <span>Learn More</span>
                   </a>
                 </div>
@@ -100,7 +100,88 @@
             </div>
           </div>
         </section>
-
+        
+        <!-- Product Categories -->
+        <section class="nk-block py-6">
+          <div class="container">
+            <div class="text-center mb-5">
+              <h2 class="fw-bold">Our Products</h2>
+              <p class="text-soft">Comprehensive pharmaceutical and healthcare solutions built on trust, innovation, and quality.</p>
+            </div>
+            <div class="nk-block mb-5">
+              <div class="row g-gs">
+    
+                <!-- Product Category 1 -->
+                {% for product in products %}
+                <div class="col-lg-4 bg-gra col-md-6">
+                  <div class="bg-light card card-bordered shadow-sm h-100">
+                    <div class="card-inner text-center">
+                      <img src="{{ product.image.url }}" alt="Antibiotics" class="img-fluid rounded mb-3" style="max-height:180px; object-fit:cover;">
+                      <h5 class="fw-bold mb-2">{{ product.name }}</h5>
+                      <p class="text-soft fs-14">
+                        {{ product.description }}
+                      </p>
+                      <div class="d-flex flex-row justify-content-between align-items-center">
+                        <span class="badge bg-primary">{{ product.type }}</span>
+                        <a href="#" class="btn btn-outline-primary btn-sm mt-2">View</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+              <div class="mt-2 d-flex justify-content-end">
+                  <a class="btn btn-outline-info">View More</a>
+                </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section class="nk-block bg-light py-6">
+          <div class="container">
+            <div class="nk-block mb-5">
+              <div class="nk-block-head text-center mb-4">
+                <h3 class="nk-block-title fw-bold">What Our Partners Say</h3>
+              </div>
+              <div class="row g-gs">
+                <div class="col-md-4">
+                  <div class="card card-bordered shadow-sm h-100">
+                    <div class="card-inner">
+                      <p class="text-soft">
+                        “Ailixir Global has consistently delivered top-quality medical supplies on schedule. Their commitment to excellence is unmatched.”
+                      </p>
+                      <h6 class="fw-bold mb-0">Dr. S. Okafor</h6>
+                      <span class="text-muted small">Meditech Hospital, Abuja</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card card-bordered shadow-sm h-100">
+                    <div class="card-inner">
+                      <p class="text-soft">
+                        “Their professionalism and transparency make them a trusted partner in healthcare distribution.”
+                      </p>
+                      <h6 class="fw-bold mb-0">Engr. Musa Lawal</h6>
+                      <span class="text-muted small">HealthPlus Logistics Ltd.</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card card-bordered shadow-sm h-100">
+                    <div class="card-inner">
+                      <p class="text-soft">
+                        “From research to product delivery, Ailixir sets the gold standard for pharmaceutical innovation.”
+                      </p>
+                      <h6 class="fw-bold mb-0">Prof. Grace Adebayo</h6>
+                      <span class="text-muted small">University of Lagos</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         <!-- ===================== -->
         <!-- QUALITY & CTA SECTION -->
         <!-- ===================== -->
@@ -148,7 +229,8 @@
 
             <div class="row g-gs justify-content-center">
               <div class="col-lg-8">
-                <form action="/contact/submit" method="POST" class="card card-bordered shadow-sm p-4 bg-white rounded-3">
+                <form action="{% url 'contact-us' %}" method="POST" class="card card-bordered shadow-sm p-4 bg-white rounded-3">
+                  {% csrf_token %}
                   <div class="row g-3">
                     <div class="col-md-6">
                       <div class="form-group">

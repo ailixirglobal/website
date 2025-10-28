@@ -56,7 +56,7 @@
                               <a href="/" class="logo-link">
                                     <img class="logo-light logo-img" src="{% static 'images/logo-dark.png' %}" alt="logo">
                                     <img class="logo-dark logo-img" src="{% static 'images/logo-light2.png' %}" alt="logo-dark">
-                                </a>
+                              </a>
                                 
                             </div>
                             <div class="header-toggle">
@@ -92,7 +92,7 @@
                                     </ul><!-- .header-action -->
                                     <ul class="header-icon list-inline pt-1">
                                       {% for social in handles %}
-                                        <li><a href="{{ social.url }}" target="_blank"><em class="fs-1 icon ni ni-{{ social.icon_class }}"></em></em></li>
+                                        <li><a href="{{ social.url }}" target="_blank"><em class="fs-1 icon ni ni-{{ social.icon_class }}"></em></a></li>
                                       {% endfor %}
                                     </ul>
                                 </div><!-- .header-caption -->

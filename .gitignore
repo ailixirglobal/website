@@ -1,2 +1,4 @@
 .env
+production/*
+staticfiles/*
 db.sqlite3
