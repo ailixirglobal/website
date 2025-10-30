@@ -1,0 +1,271 @@
+
+
+<div class="card bg-black">
+  <div class="card-header text-start">
+    <span>AI Recommendator</span>
+  </div>
+  <div class="card-body text-start">
+    <div class="border d-flex flex-column p-2">
+      <textarea id="user-symptoms" style="outline: none;" class="w-100 border-0 text-white bg-black p-2" spellcheck="off" rows="8" placeholder="Enter Your Symptoms"></textarea>
+      <div class="d-flex justify-content-end">
+        <button id="send-symptoms-btn" class="btn btn-primary">Send</button>
+      </div>
+    </div>
+    <div id="drug-results-section">
+      <div id="drug-cards-container" class="mt-2 d-flex h-100 w-100 flex-row flex-wrap gap-1"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const sendButton = document.getElementById('send-symptoms-btn');
+    const symptomsInput = document.getElementById('user-symptoms');
+    const resultsSection = document.getElementById('drug-results-section');
+    const cardsContainer = document.getElementById('drug-cards-container');
+    
+    // Sample drug database
+    const drugDatabase = [
+        {
+            name: "Ibuprofen",
+            type: "NSAID (Non-Steroidal Anti-Inflammatory Drug)",
+            description: "Used to reduce fever and treat pain or inflammation caused by many conditions such as headache, toothache, back pain, arthritis, menstrual cramps, or minor injury.",
+            reason: "Recommended for pain relief and reducing inflammation associated with common symptoms like headaches, muscle aches, and fever."
+        },
+        {
+            name: "Acetaminophen",
+            type: "Analgesic and Antipyretic",
+            description: "Used to treat mild to moderate pain and to reduce fever. It is often used for headaches, muscle aches, arthritis, backaches, toothaches, colds, and fevers.",
+            reason: "Recommended for fever reduction and pain relief without the anti-inflammatory effects of NSAIDs."
+        },
+        {
+            name: "Diphenhydramine",
+            type: "Antihistamine",
+            description: "Used to relieve symptoms of allergy, hay fever, and the common cold. These symptoms include rash, itching, watery eyes, itchy eyes/nose/throat, cough, runny nose, and sneezing.",
+            reason: "Recommended for allergy symptoms, including itching, sneezing, and runny nose."
+        },
+        {
+            name: "Loperamide",
+            type: "Antidiarrheal",
+            description: "Used to control symptoms of diarrhea, including travel diarrhea. It works by slowing down the movement of the intestines, which helps to decrease the number of bowel movements and make the stool less watery.",
+            reason: "Recommended for treating diarrhea symptoms when no underlying infection is suspected."
+        }
+    ];
+    
+    // Function to analyze symptoms and suggest drugs
+    function analyzeSymptoms(symptomsText) {
+        if (!symptomsText || symptomsText.trim().length === 0) {
+            return [];
+        }
+        
+        const lowercaseSymptoms = symptomsText.toLowerCase();
+        const suggestedDrugs = [];
+        
+        // Simple keyword matching for demonstration
+        const symptomKeywords = {
+            'pain': ['Ibuprofen', 'Acetaminophen'],
+            'headache': ['Ibuprofen', 'Acetaminophen'],
+            'fever': ['Acetaminophen', 'Ibuprofen'],
+            'inflammation': ['Ibuprofen'],
+            'allergy': ['Diphenhydramine'],
+            'itch': ['Diphenhydramine'],
+            'sneeze': ['Diphenhydramine'],
+            'runny nose': ['Diphenhydramine'],
+            'diarrhea': ['Loperamide']
+        };
+        
+        // Find matching drugs based on symptoms
+        for (const [symptom, drugNames] of Object.entries(symptomKeywords)) {
+            if (lowercaseSymptoms.includes(symptom)) {
+                drugNames.forEach(drugName => {
+                    const drug = drugDatabase.find(d => d.name === drugName);
+                    if (drug && !suggestedDrugs.some(d => d.name === drug.name)) {
+                        suggestedDrugs.push(drug);
+                    }
+                });
+            }
+        }
+        
+        // If no specific matches found, suggest some general options
+        if (suggestedDrugs.length === 0) {
+            return drugDatabase.slice(0, 2);
+        }
+        
+        return suggestedDrugs;
+    }
+    // ==============================
+// 🌿 Ailixir Global Herbal Database
+// ==============================
+const ailixirHerbalDatabase = [
+    {
+        name: "Neem (Dogon Yaro)",
+        scientificName: "Azadirachta indica",
+        type: "Antimicrobial, Antipyretic, Antimalarial",
+        description: "Used for treating malaria, fever, infections, skin diseases, and as a natural immune booster.",
+        reason: "Dogon Yaro is highly effective for fever, malaria, and general infections due to its strong antimicrobial and detoxifying properties."
+    },
+    {
+        name: "Moringa (Zogale)",
+        scientificName: "Moringa oleifera",
+        type: "Nutrient-dense adaptogen",
+        description: "Used to boost immunity, improve digestion, reduce inflammation, and balance blood sugar.",
+        reason: "Zogale provides natural vitamins and antioxidants helpful for weakness, fatigue, and inflammation."
+    },
+    {
+        name: "Aloe Vera (Ewe Abo)",
+        scientificName: "Aloe barbadensis",
+        type: "Anti-inflammatory, Skin Soothing, Digestive Aid",
+        description: "Used for skin healing, ulcers, constipation, and detoxification.",
+        reason: "Recommended for ulcers, skin wounds, and internal cleansing."
+    },
+    {
+        name: "Bitter Leaf (Ewuro / Shuwaka)",
+        scientificName: "Vernonia amygdalina",
+        type: "Antimalarial, Antidiabetic, Detoxifier",
+        description: "Used to treat malaria, typhoid, diabetes, and digestive issues.",
+        reason: "Helps purify blood, reduce fever, and fight infections naturally."
+    },
+    {
+        name: "Scent Leaf (Efirin / Daidoya)",
+        scientificName: "Ocimum gratissimum",
+        type: "Antibacterial, Antifungal, Digestive Aid",
+        description: "Used to treat stomach infections, cough, and diarrhea.",
+        reason: "Excellent for intestinal infections and improving gut health."
+    },
+    {
+        name: "Garlic (Tafarnuwa)",
+        scientificName: "Allium sativum",
+        type: "Antimicrobial, Cardioprotective",
+        description: "Used to boost immunity, lower blood pressure, and fight bacterial infections.",
+        reason: "Natural antibiotic and immune enhancer."
+    },
+    {
+        name: "Ginger (Citta / Atale)",
+        scientificName: "Zingiber officinale",
+        type: "Antiinflammatory, Antiemetic, Analgesic",
+        description: "Used for headache, nausea, and inflammation.",
+        reason: "Great for pain relief, cold, and digestive problems."
+    }
+];
+
+
+// ==============================
+// 🌿 Symptom-based Herbal Recommendation Function
+// ==============================
+async function analyzeHerbalSymptoms(symptomsText) {
+    if (!symptomsText || symptomsText.trim().length === 0) {
+        return [];
+    }
+    
+    const lowercaseSymptoms = symptomsText.toLowerCase();
+    const suggestedHerbs = [];
+
+    // 🌿 Symptom Keyword Mapping
+    const symptomKeywords = {
+        'fever': ['Neem (Dogon Yaro)', 'Bitter Leaf (Shuwaka)'],
+        'malaria': ['Neem (Dogon Yaro)', 'Bitter Leaf (Shuwaka)'],
+        'headache': ['Ginger (Citta)', 'Neem (Dogon Yaro)'],
+        'stomach pain': ['Scent Leaf (Daidoya)', 'Bitter Leaf (Shuwaka)'],
+        'infection': ['Garlic (Tafarnuwa)', 'Neem (Dogon Yaro)', 'Scent Leaf (Daidoya)'],
+        'ulcer': ['Aloe Vera (Ewe Abo)', 'Moringa (Zogale)'],
+        'diarrhea': ['Scent Leaf (Daidoya)', 'Bitter Leaf (Shuwaka)'],
+        'cold': ['Ginger (Citta)', 'Garlic (Tafarnuwa)'],
+        'weakness': ['Moringa (Zogale)', 'Ginger (Citta)'],
+        'inflammation': ['Moringa (Zogale)', 'Ginger (Citta)']
+    };
+
+    // 🌿 Match symptoms to herbs
+    for (const [symptom, herbNames] of Object.entries(symptomKeywords)) {
+        if (lowercaseSymptoms.includes(symptom)) {
+            herbNames.forEach(herbName => {
+                const herb = ailixirHerbalDatabase.find(h => h.name === herbName);
+                if (herb && !suggestedHerbs.some(h => h.name === herb.name)) {
+                    suggestedHerbs.push(herb);
+                }
+            });
+        }
+    }
+    
+    //try {
+    //    const response = await fetch(`/herbs-recom/?symptoms=${lowercaseSymptoms}`);
+   //     const data = await response.json();
+    //    console.log(data)
+    //    return data['results']
+    //} catch(e){
+    //  alert(e)
+    //}
+    // 🌿 Default herbs if no direct match found
+    if (suggestedHerbs.length === 0) {
+        return ailixirHerbalDatabase.slice(0, 2);
+    }
+
+    return suggestedHerbs;
+}
+
+    // Function to display results
+    function displayResults(drugs) {
+      console.log(drugs)
+        if (drugs.length === 0) {
+            cardsContainer.innerHTML = `
+                <div class="col-12">
+                    <div class="alert alert-warning text-center">
+                        <i class="bi bi-exclamation-triangle me-2"></i>
+                        No specific drug recommendations found. Please provide more detailed symptoms.
+                    </div>
+                </div>
+            `;
+            return;
+        }
+        
+        let cardsHTML = '';
+        
+        drugs.forEach(drug => {
+            cardsHTML += `
+                <div class="col-md-6">
+                    <div class="card bg-dark h-100 drug-card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-start">
+                                <i class="bi bi-capsule fs-2 text-primary me-3 mt-1"></i>
+                                <div>
+                                    <h6 class="card-title">${drug.name}</h6>
+                                    <p class="text-muted small mb-2">${drug.type}</p>
+                                    <p class="card-text small">${drug.description.substring(0, 200)}${drug.description.length > 200 ? '...' : ''}</p>
+                                    <div class="reason-box p-2 rounded bg-light mt-2 text-black">
+                                        <small><strong>Why recommended:</strong> ${drug.reason.substring(0, 80)}${drug.reason.length > 80 ? '...' : ''}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        
+        cardsContainer.innerHTML = cardsHTML;
+        resultsSection.style.display = 'block';
+    }
+    
+    // Event listener for send button
+    sendButton.addEventListener('click', function() {
+        const symptoms = symptomsInput.value;
+        
+        // Show loading state
+        cardsContainer.innerHTML = `
+            <div class="col-12 text-center py-4">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Analyzing...</span>
+                </div>
+                <p class="mt-2">Analyzing your symptoms...</p>
+            </div>
+        `;
+        resultsSection.style.display = 'block';
+        
+        // Simulate API call with timeout
+        setTimeout(async () => {
+            const suggestedDrugs = await analyzeHerbalSymptoms(symptoms);
+            displayResults(suggestedDrugs);
+        }, 800);
+    });
+});
+</script>
+

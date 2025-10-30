@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect
+from django.http import JsonResponse
 from django.core.mail import send_mail
+from .utils.herbal_analyzer import analyze_herbal_symptoms
 from .models import SocialHandle, Product
 # Create your views here.
 
 def homepage(request):
   context = {}
-  handles = SocialHandle.objects.all()
   products = Product.objects.all()
-  context['handles'] = handles
   context['products'] = products
   return render(request, 'index/homepage.html', context)
 
@@ -42,3 +42,16 @@ def contactpage(request):
 
 def vision_missionpage(request):
   return render(request, 'index/homepage.html')
+
+
+
+def herbal_recommendation_api(request):
+    """
+    API endpoint for herbal recommendations.
+    Example: /api/herbal?symptoms=fever, headache
+    """
+    symptoms = request.GET.get("symptoms", "")
+    results = analyze_herbal_symptoms(symptoms)
+    return JsonResponse({"symptoms": symptoms, "results": results})
+  
+  
