@@ -1,0 +1,7 @@
+<div class="comment-item">
+    <div class="d-flex justify-content-between">
+        <strong class="comment-author">{{ comment.author.username }}</strong>
+        <small class="comment-date">{{ comment.created_at|date:"M d, Y H:i" }}</small>
+    </div>
+    <p class="mb-0 mt-2">{{ comment.content }}</p>
+</div>

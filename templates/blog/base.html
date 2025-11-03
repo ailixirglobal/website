@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Primary Meta Tags -->
+    <title>Ailixir Global — Trusted Pharmaceutical & Healthcare Solutions</title>
+    <meta name="title" content="Ailixir Global — Trusted Pharmaceutical & Healthcare Solutions">
+    <meta name="description" content="Ailixir Global is a leading pharmaceutical company dedicated to improving lives through innovative healthcare products, medical solutions, and quality-driven drug distribution worldwide.">
+    
+    <!-- SEO Keywords -->
+    <meta name="keywords" content="Ailixir Global, pharmaceutical company, healthcare, medicine, drug manufacturing, medical distribution, healthcare innovation, pharmaceutical Nigeria, global pharma solutions">
+    
+    <!-- Author & Robots -->
+    <meta name="author" content="Ailixir Global">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ailixirglobal.com/">
+    <meta property="og:title" content="Ailixir Global — Trusted Pharmaceutical & Healthcare Solutions">
+    <meta property="og:description" content="Delivering innovative and reliable healthcare products that enhance quality of life worldwide.">
+    <meta property="og:image" content="https://ailixirglobal.com/static/images/ailixir-banner.jpg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://ailixirglobal.com/">
+    <meta name="twitter:title" content="Ailixir Global — Trusted Pharmaceutical & Healthcare Solutions">
+    <meta name="twitter:description" content="Delivering innovative and reliable healthcare products that enhance quality of life worldwide.">
+    <meta name="twitter:image" content="https://ailixirglobal.com/static/images/logo-light.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <!-- Page Title  -->
+    
+    <!-- StyleSheets  -->
+    <link rel="stylesheet" href="{% static 'assets/css/dashlite.css' %}">
+    <link id="skin-default" rel="stylesheet" href="{% static 'assets/css/theme.css' %}">
+    <style>
+      .text-soft{
+        color: black !important;
+      }
+    </style>
+</head>
+
+<body class="nk-body bg-white npc-landing ">
+    <div class="nk-app-root">
+        <!-- main @s -->
+        <div class="nk-main ">
+              <header class="header header-32 has-header-main-s1 bg-black" id="home">
+                <div class="header-main header-main-s1 is-sticky is-transparent on-dark">
+                    <div class="container header-container">
+                        <div class="header-wrap">
+                            <div class="header-logo">
+                              <a href="/" class="logo-link">
+                                    <img class="logo-light logo-img" src="{% static 'images/logo-dark.png' %}" alt="logo">
+                                    <img class="logo-dark logo-img" src="{% static 'images/logo-light2.png' %}" alt="logo-dark">
+                              </a>
+                                
+                            </div>
+                            <div class="header-toggle">
+                                <button class="menu-toggler" data-target="mainNav">
+                                    <em class="menu-on icon ni ni-menu"></em>
+                                    <em class="menu-off icon ni ni-cross"></em>
+                                </button>
+                            </div><!-- .header-nav-toggle -->
+                            <nav class="header-menu" data-content="mainNav">
+                                <ul class="menu-list ms-lg-auto">
+                                    <li class="menu-item"><a href="{% url 'home' %}" class="menu-link nav-link">Home</a></li>
+                                    <li class="menu-item"><a href="{% url 'about' %}" class="menu-link nav-link">About Us</a></li>
+                                    <li class="menu-item"><a href="{% url 'contact' %}" class="menu-link nav-link">Contact Us</a></li>
+                                </ul>
+                            </nav><!-- .nk-nav-menu -->
+                        </div><!-- .header-warp-->
+                    </div><!-- .container-->
+                </div><!-- .header-main-->
+              </header>
+            
+            {% block content %}
+            {% endblock content %}
+            
+            <footer class="footer bg-black is-dark">
+                <div class="container">
+                    <div class="row g-gs justify-content-between py-4 py-md-6">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="widget widget-about mt-n2">
+                                <a href="/" class="logo-link">
+                                    <img class="" src="{% static 'images/logo-dark.png' %}" alt="logo">
+                                </a>
+                                <div class="divider"></div>
+                                  <form method="post" action="{% url 'subscribe' %}" class="form-validation">
+                                    {% csrf_token %}
+                                    <h6>Subscribe to our newsletter and be part of the health revolution.</h6>
+                                    <div class="form-group">
+                                        <div class="form-control-wrap">
+                                            <input type="email" name="email" class="form-control" placeholder="example@abc.xyz" required>
+                                        </div>
+                                        <button class="mt-1 btn btn-primary">Subscribe</button>
+                                    </div>
+                                    
+                                  </form>
+                            </div>
+                        </div><!-- .col -->
+                        <div class="col-lg-6 col-12">
+                            <p>Ailixir focuses on developing AI algorithms to accelerate drug discovery, predict treatment outcomes, and optimize herbal formulations using data science. By combining traditional African medicine with AI precision, we aim to produce safer, faster, and smarter healthcare solutions.</p>
+                            <div class="widget">
+                                <h6 class="widget-title">Quick Actions</h6>
+                                <ul class="widget-link link-inline link-inline-2col link-inline-md-3col g-2 py-1">
+                                    <li><a href="{% url 'about' %}">About Us</a></li>
+                                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                                    <li><a href="#">Our Vision & Mission</a></li>
+                                    <li><a href="#">Whitepaper</a></li>
+                                    <li><a href="#">Terms of Service</a></li>
+                                    <li><a href="#">Privacy policy</a></li>
+                                    <li><a href="#">Knowledge Center</a></li>
+                                </ul>
+                            </div>
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                    <hr class="hr border-light mb-0 mt-n1">
+                    <div class="row g-3 align-items-center justify-content-md-between py-4">
+                        <div class="col-md-8">
+                            <div>Copyright &copy; 2025 Ailixir Global Limited.</div>
+                        </div><!-- .col -->
+                        <div class="col-md-4 d-flex justify-content-md-end">
+                            <ul class="social">
+                              {% for social in handles %}
+                                <li><a href="{{ social.url }}" target="_blank"><em class="icon ni ni-{{ social.icon_class }}"></em></em></li>
+                              {% endfor %}
+                            </ul><!-- .footer-icon -->
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                </div><!-- .container -->
+            </footer><!-- .footer -->
+        </div>
+        <!-- main @e -->
+    </div>
+    <!-- app-root @e -->
+    <!-- JavaScript -->
+    <script src="{% static 'assets/js/bundle.js' %}"></script>
+    <script src="{% static 'assets/js/scripts.js' %}"></script>
+</body>
+
+</html>
