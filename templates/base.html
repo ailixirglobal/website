@@ -51,7 +51,7 @@
             <div class="nk-sidebar nk-sidebar-fixed is-light " data-content="sidebarMenu">
                 <div class="nk-sidebar-element nk-sidebar-head">
                     <div class="nk-sidebar-brand">
-                        <a href="html/index.html" class="logo-link nk-sidebar-logo">
+                        <a href="{% url 'home' %}" class="logo-link nk-sidebar-logo">
                             <img class="logo-light logo-img" src="{% static '/images/logo-dark.png' %}" alt="logo">
                             <img class="logo-dark logo-img" src="{% static '/images/logo-light.jpg' %}" alt="logo-dark">
                             <img class="logo-small logo-img logo-img-small" src="{% static '/images/logo-small.png' %}" alt="logo-small">
@@ -74,22 +74,31 @@
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
                                     <a href="{% url 'about' %}" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-info"></em></span>
+                                        <span class="nk-menu-icon"><em class="icon ni ni-info-i"></em></span>
                                         <span class="nk-menu-text">About Us</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
                                     <a href="{% url 'contact' %}" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-phone"></em></span>
+                                        <span class="nk-menu-icon"><em class="icon ni ni-call"></em></span>
                                         <span class="nk-menu-text">Contact Us</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
+                                
                                 <li class="nk-menu-item">
                                     <a href="{% url 'blog:post_list' %}" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-blog"></em></span>
-                                        <span class="nk-menu-text">Our Blog</span>
+                                        <span class="nk-menu-icon"><em class="icon ni ni-property"></em></span>
+                                        <span class="nk-menu-text">Articles</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
+                                {% if user.is_authenticated %}
+                                <li class="nk-menu-item">
+                                    <a href="{% url 'account_logout' %}" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-sign-out"></em></span>
+                                        <span class="nk-menu-text">Sign out</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                {% endif %}
                                 <!-- .nk-menu-item -->
                             </ul><!-- .nk-menu -->
                         </div><!-- .nk-sidebar-menu -->
@@ -107,7 +116,7 @@
                                 <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
                             </div>
                             <div class="nk-header-brand d-xl-none">
-                                <a href="html/index.html" class="logo-link">
+                                <a href="{% url 'home' %}" class="logo-link">
                                     <img class="logo-img" src="{% static '/images/logo-light2.png' %}" alt="logo">
                                 </a>
                             </div><!-- .nk-header-brand -->

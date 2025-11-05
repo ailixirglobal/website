@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.core.mail import send_mail
+from django.contrib import messages
 from .utils.herbal_analyzer import analyze_herbal_symptoms
 from .models import SocialHandle, Product
 # Create your views here.
@@ -32,6 +33,7 @@ we can reach out to you through your provided phone number {phone}
 we all from Ailixir Global Limited, we say THANK YOU!
     '''
     send_mail('Thank you for contacting us.', our_message, 'info@ailixirglobal.com', [email])
+    messages.add_message(request, messages.INFO,'Thank You for contacting Us.')
   return redirect('home')
   
 def aboutpage(request):

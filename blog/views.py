@@ -63,12 +63,15 @@ def summernote_delete(request):
     return JsonResponse({'deleted': True})
 
 def post_list(request):
+    context = {}
     """Display list of blog posts"""
     posts = Post.objects.all().order_by('-created_at')
     
     # Search functionality
-    search_query = request.GET.get('search')
+    search_query = request.GET.get('q')
     if search_query:
+        search_query = search_query.strip()
+        context['q'] = search_query
         posts = posts.filter(
             Q(title__icontains=search_query) | 
             Q(content__icontains=search_query) |
@@ -80,9 +83,8 @@ def post_list(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     
-    context = {
-        'posts': page_obj,
-    }
+    context['posts'] = page_obj
+        
     
     if request.htmx:
         return render(request, 'blog/post_list.html', context)

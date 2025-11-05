@@ -1,43 +1,58 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
 {% block content %}
 
 <div class="nk-block-tools">
-  <a href="{% url 'blog:post_create' %}">Add Post</a>
-</div>
-        <div class="mb-2 d-flex flex-wrap gap-2 h-100">
-            {% for post in posts %}
-            <div class="w-75 h-50 card border border-light">
-                <div class="card-header">
-                <div class="card-text">
-                  {{post.category}}
-                  {% for tag in post.tags.all %}
-                    <span class="badge bg-primary">{{tag}}</span>
-                  {% endfor %}
-                </div>
-                </div>
-              <div class="card-body">
-                <div class="card-title">{{post.title}}</div>
-              </div>
-              <div class="card-footer">
-                <span>{{post.created_at}}</span>
-                <span><a href="{% url 'blog:post_detail' post.slug %}">View</a></span>
-                {% if user.is_staff %}
-                  <span><a href="{% url 'blog:post_update' post.slug %}">Edit</a></span>
-                {% endif %}
-              </div>
+  <div style="width:325px" class="m-auto bg-white p-1 mb-2 mt-1 border position-static top">
+    <form class="w-100 d-flex justify-content-between align-items-center">
+      <div class="form-control-wrap">
+        <div class="input-group">
+            <input value="{{ q }}" name="q" type="search" class="form-control" placeholder="Search Article ...">
+            <div class="input-group-append">
+                <button class="btn btn-outline-primary btn-dim"><em class="icon ni ni-search"></em></button>
             </div>
-            {% empty %}
-            <div class="nk-tb-item">
-                <div class="nk-tb-col text-center" colspan="5">
-                    No posts found. <a href="{% url 'blog:post_create' %}" >Create your first post</a>.
-                </div>
-            </div>
-            {% endfor %}
-        </div>
         </div>
       </div>
-    </div>
+      <a href="{% url 'blog:post_create' %}">Add Post</a>
+    </form>
   </div>
+</div>
+<div class="mb-2 d-flex flex-wrap gap-2 h-100 justify-content-around">
+    {% for post in posts %}
+    <a href="{{ post.get_absolute_url }}">
+    <div style="
+      width: 325px;
+      height: 300px;
+      background-color: white;
+      {% if post.featured_image %}
+      background-image: url('{{ post.featured_image.url }}');
+      background-position: center;
+      {% endif %}
+    " class="border position-relative">
+      <div style="right:0;" class="position-absolute">
+        {% for tag in post.tags.all %}
+          <span class="badge bg-primary m-1">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      <div style="
+        bottom: 0;
+        background-color: #000000a5;
+        " class="w-100 position-absolute d-flex flex-column text-white p-2">
+        <span class="h4">{{ post.title }}</span>
+        <span>{{ post.excerpt|truncatechars:"50" }}</span>
+        <span class="align-items-right">{{ post.created_at }}</span>
+      </div>
+    </div>
+    </a>
+    {% empty %}
+    <div class="nk-tb-item">
+        <div class="nk-tb-col text-center" colspan="5">
+            No posts found. <a href="{% url 'blog:post_create' %}" >Create your first post</a>.
+        </div>
+    </div>
+    {% endfor %}
+</div>
+    
 {% endblock content %}
