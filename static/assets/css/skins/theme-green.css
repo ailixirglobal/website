@@ -37,6 +37,12 @@
 .is-dark .nk-menu-link {
   color: #8699b2;
 }
+.is-dark .nk-menu-link:hover {
+  background: #172641;
+}
+.is-dark .active > .nk-menu-link {
+  background: #172641;
+}
 .is-dark .nk-menu-icon {
   color: #9faec2;
 }
@@ -49,16 +55,7 @@
 .is-dark .nk-menu-link:hover .nk-menu-icon, .is-dark .nk-menu-item.active > .nk-menu-link .nk-menu-icon, .is-dark .nk-menu-item.current-menu > .nk-menu-link .nk-menu-icon {
   color: #13dba4;
 }
-.is-dark .nk-news-icon .icon {
-  color: #0fac81;
-}
-.is-dark .nk-news-text .icon {
-  color: #8094ae;
-}
-.is-dark .nk-news-text p span {
-  color: rgba(128, 148, 174, 0.9);
-}
-.is-dark .user-name, .is-dark .nk-news-text p {
+.is-dark .user-name {
   color: #90a1b8;
 }
 .is-dark .nk-quick-nav-icon {
@@ -68,6 +65,12 @@
 .is-theme .nk-menu-link {
   color: #a3dfcf;
 }
+.is-theme .nk-menu-link:hover {
+  background: #09654b;
+}
+.is-theme .active > .nk-menu-link {
+  background: #09654b;
+}
 .is-theme .nk-menu-icon {
   color: #c2eadf;
 }
@@ -75,16 +78,13 @@
   color: #63f1ca;
   background: #0a7859;
 }
-.is-theme .nk-news-icon .icon {
-  color: #1cebb3;
-}
-.is-theme .nk-news-text .icon, .is-theme .nk-quick-nav-icon, .is-theme .overline-title {
+.is-theme .nk-quick-nav-icon, .is-theme .overline-title {
   color: #abe2d3;
 }
-.is-theme .nk-news-text p span, .is-theme .nk-menu-heading .overline-title {
+.is-theme .nk-menu-heading .overline-title {
   color: rgba(171, 226, 211, 0.8);
 }
-.is-theme .user-name, .is-theme .nk-news-text p {
+.is-theme .user-name {
   color: #bee9dd;
 }
 
@@ -95,10 +95,9 @@
 .bg-primary,
 .icon-circle,
 .noUi-connect,
-.nk-kycfm-label::after,
-.buysell-pm-label:after,
 .nk-msg-menu-item a:after,
-.ui-shady .nk-msg-item.active:after, .ui-shady .nk-msg-item.current:after {
+.ui-shady .nk-msg-item.active:after, .ui-shady .nk-msg-item.current:after,
+.ui-softy .nk-msg-item.active:after, .ui-softy .nk-msg-item.current:after {
   background: #0fac81;
 }
 
@@ -116,10 +115,6 @@
 
 .user-avatar, [class^=user-avatar]:not([class*=-group]) {
   background: #13dba4;
-}
-
-.nk-news-item:hover .nk-news-text .icon {
-  color: #13dba4;
 }
 
 .nk-menu-link:hover,
@@ -163,7 +158,7 @@
 .list-step li.list-step-current:before,
 .accordion-s2 .accordion-head .title,
 .accordion-s3 .accordion-head .title,
-.bg-outline-primary,
+.badge-outline-primary,
 .badge-dim.bg-primary,
 .badge-dot.bg-primary,
 .badge-dim.bg-outline-primary,
@@ -171,16 +166,6 @@
 .form-clip,
 .form-text-hint,
 .search-submit:hover,
-.nk-news-icon .icon,
-.nk-refwg-name .title,
-.nk-wg1-amount .amount,
-.nk-wgw-add a .title,
-.nk-wgw-actions a:hover span,
-.nk-wgw-actions a:hover .icon,
-.nk-wg4-note span,
-.nk-kycfm-control:checked ~ .nk-kycfm-label .label-icon,
-.wallet-item-add a:hover .wallet-icon,
-.wallet-item-add a:hover .wallet-name,
 .attach-item .icon,
 .attach-download:hover span,
 .nk-reply-meta-info .whom,
@@ -188,17 +173,15 @@
 .nk-msg-menu-item a:hover,
 .nk-msg-menu-item.active a,
 .user-balance,
-.user-avatar[class*=-primary-dim],
-.nk-order-ovwg-data.sell .amount,
-.nk-order-ovwg-data.sell .title .icon,
-.nk-wg-action-content p strong, a,
+.user-avatar[class*=-primary-dim], a,
 .dropzone .dz-message-text span,
 .nk-switch-icon.active,
 .link-list-plain a .icon,
 .chat-upload-option a,
 .is-unread .chat-context .status,
 .add-opt:hover .sub-text, .add-opt:hover .icon,
-.icon[class*=bg-primary-dim] {
+.icon[class*=bg-primary-dim],
+.nk-tb-list .tb-asterisk a {
   color: #0fac81;
 }
 
@@ -244,6 +227,8 @@ a.bg-primary:hover, a.bg-primary:focus, button.bg-primary:hover, button.bg-prima
 }
 
 .alert-pro.alert-primary, .bg-primary,
+.sp-package-choose:checked ~ label,
+.plan-control:checked + .plan-item-card,
 .form-control:focus,
 .form-control.focus,
 .custom-file-input:focus ~ .custom-file-label,
@@ -259,6 +244,10 @@ a.bg-primary:hover, a.bg-primary:focus, button.bg-primary:hover, button.bg-prima
 
 .dropdown-menu-s1 {
   border-top-color: #0fac81;
+}
+
+.nk-iv-wg2-amount.ui-v2 {
+  border-bottom-color: #0fac81;
 }
 
 .page-item.active .page-link,
@@ -294,28 +283,12 @@ a.bg-primary:hover, a.bg-primary:focus, button.bg-primary:hover, button.bg-prima
   color: #ffffff;
 }
 
-.icon-avatar, .nk-iv-scheme-icon.is-running {
+.icon-avatar {
   color: #0fac81;
   background-color: #dbf3ec;
 }
 
-.is-dark .nk-wgw-icon {
-  background: #3fbd9a;
-}
-
-.is-dark .nk-wgw-balance .amount-sm, .is-dark .nk-wgw-actions a .icon, .is-dark .nk-wgw-more .btn-trigger {
-  color: #abe2d3;
-}
-
-.is-dark .nk-wgw-actions a {
-  color: #abe2d3;
-}
-
-.is-dark .nk-wgw-actions {
-  border-color: rgba(171, 226, 211, 0.4);
-}
-
-.is-dark .nk-wgw-more .btn-trigger:before, .is-theme .nk-quick-nav-icon:before {
+.is-theme .nk-quick-nav-icon:before {
   background-color: #03231a;
 }
 
@@ -471,20 +444,15 @@ a.bg-primary:hover, a.bg-primary:focus, button.bg-primary:hover, button.bg-prima
   background-color: #e7f7f2;
 }
 
-.is-theme .nk-sidebar-footer, .is-theme .nk-sidebar-profile-fixed {
+.is-theme .nk-sidebar-footer, .nk-apps-sidebar.is-theme, .is-theme .nk-sidebar-profile-fixed {
   background: #064936;
   border-color: #0a7859;
 }
 
-.is-theme .wallet-name, .is-theme .wallet-icon, .is-theme .wallet-balance span, .is-theme .nk-menu-footer .nk-menu-link, .is-theme .sub-text, .is-theme .lead-text span {
+.is-theme .nk-menu-footer .nk-menu-link, .is-theme .sub-text, .is-theme .lead-text span {
   color: #abe2d3;
 }
 
-@media (min-width: 1200px) {
-  .nk-sidebar.is-theme .nk-menu > li:hover > a, .nk-sidebar.is-theme .nk-menu > li.active > a, .nk-sidebar.is-theme .nk-menu > li.current-menu > a, .nk-sidebar.is-theme .nk-menu > li > a:hover, .is-theme .wallet-item a:before {
-    background: #096e52;
-  }
-}
 .nav-switch-s2 .nav-link:hover, .nav-switch-s2 .nav-link:focus {
   color: #526484;
 }

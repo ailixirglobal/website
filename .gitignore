@@ -1,4 +1,5 @@
 .env
 production/*
+media/*
 staticfiles/*
 db.sqlite3

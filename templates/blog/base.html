@@ -140,6 +140,8 @@
     <!-- JavaScript -->
     <script src="{% static 'assets/js/bundle.js' %}"></script>
     <script src="{% static 'assets/js/scripts.js' %}"></script>
+    {% block extra_js %}
+    {% endblock extra_js %}
 </body>
 
 </html>

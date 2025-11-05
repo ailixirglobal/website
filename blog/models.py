@@ -4,9 +4,27 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import slugify
-#from PIL import Image
+from django.conf import settings
+import os
+import uuid
 
+def attachment_upload_to(instance, filename):
+    # Rename files to unique names
+    ext = filename.split('.')[-1]
+    new_filename = f"{uuid.uuid4()}.{ext}"
+    return os.path.join('attachments', new_filename)
 
+class Attachment(models.Model):
+    uploader = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    file = models.FileField(upload_to=attachment_upload_to)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    in_use = models.BooleanField(default=False)   # set True when attached to a saved post
+    
+    def filename(self):
+        return os.path.basename(self.file.name)
+
+    def __str__(self):
+        return f"{self.filename()} ({'in use' if self.in_use else 'temp'})"
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True)

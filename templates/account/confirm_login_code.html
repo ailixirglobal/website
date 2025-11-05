@@ -1,0 +1,41 @@
+
+{% extends "account/base_entrance.html" %}
+{% block content %}
+                <!-- content @s -->
+                <div class="d-flex flex-column align-items-center">
+                  <div class="nk-block-head">
+                    <div class="nk-block-head-content">
+                        <h5 class="nk-block-title">Sign-In</h5>
+                        <div class="nk-block-des">
+                          We've sent a code to <a href="mailto:{{ email }}">{{ email }}</a>. The code expires shortly, so please enter it soon.
+                        </div>
+                        {% if form.code.errors %}
+                          <div class="bg-danger text-white border border-danger p-1 mt-4 mb-4">{{ form.code.errors.0 }}. Try again.</div>
+                        {% endif %}
+                        </div>
+                    </div>
+                  </div><!-- .nk-block-head -->
+                  <form style="width:325px" method="post" class="form-validate is-alter bg-white p-2 rounded" autocomplete="off">
+                      {% csrf_token %}
+                      {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                          {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                          {% endfor %}
+                        </div>
+                      {% endif %}
+                      <div class="form-group">
+                          <div class="form-label-group">
+                              <label class="form-label" for="email-address">Code</label>
+                              <a class="link link-primary link-sm" tabindex="-1" href="#">Need Help?</a>
+                          </div>
+                          <div class="form-control-wrap">
+                              <input name="code" autocomplete="off" type="text" class="form-control form-control-lg" required id="code" placeholder="Enter Code">
+                          </div>
+                      </div><!-- .form-group -->
+                      <div class="form-group">
+                          <button class="btn btn-lg btn-primary btn-block">Confirm</button>
+                      </div>
+                  </form><!-- form -->
+                </div>
+{% endblock content %}

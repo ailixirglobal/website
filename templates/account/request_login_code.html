@@ -1,0 +1,42 @@
+
+
+{% extends "account/base_entrance.html" %}
+{% load i18n %}
+{% block content %}
+                <!-- content @s -->
+                <div class="d-flex flex-column align-items-center">
+                  <div class="nk-block-head">
+                    <div class="nk-block-head-content">
+                        <h5 class="nk-block-title">{% translate "Send me a sign-in code" %}</h5>
+                        <div class="nk-block-des">
+                          <p>You will receive a special code for a password-free sign-in.</p>
+                        </div>
+                    </div>
+                  </div><!-- .nk-block-head -->
+                  <form method="post" style="width:325px" class="form-validate is-alter bg-white p-2 rounded" autocomplete="off">
+                      {% csrf_token %}
+                      {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                          {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                          {% endfor %}
+                        </div>
+                      {% endif %}
+                      <div class="form-group">
+                          <div class="form-label-group">
+                              <label class="form-label" for="email-address">Email</label>
+                              <a class="link link-primary link-sm" tabindex="-1" href="#">Need Help?</a>
+                          </div>
+                          <div class="form-control-wrap">
+                              <input name="email" autocomplete="off" type="email" class="form-control form-control-lg" required id="email-address" placeholder="Enter your email address or username">
+                          </div>
+                      </div><!-- .form-group -->
+                      <div class="form-group">
+                          <button class="btn btn-lg btn-primary btn-block">Request Code</button>
+                      </div>
+                  </form><!-- form -->
+                  <div class="text-center">
+                                        <span class="fw-500">Can't Sign-In? <a href="{% url 'account_login' %}">Other Option</a></span>
+                                    </div>
+                </div>
+{% endblock content %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseBadRequest
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -8,6 +8,59 @@ from django.views.decorators.http import require_http_methods, require_POST
 from django.views.decorators.csrf import csrf_exempt
 from .models import Post, Category, Tag, Comment
 from .forms import PostForm, CommentForm
+
+import os, json
+from django.conf import settings
+from django.core.files.storage import default_storage
+from django.http import JsonResponse
+from .models import Attachment
+
+@require_POST
+def summernote_upload(request):
+    """Handles Summernote image upload."""
+    files = request.FILES.getlist('file') or request.FILES.getlist('files[]') or []
+    if not files:
+        return HttpResponseBadRequest('No files received')
+
+    uploaded = []
+    for f in files:
+        attach = Attachment.objects.create(
+            uploader=request.user if request.user.is_authenticated else None,
+            file=f,
+            in_use=False
+        )
+        uploaded.append({
+            'id': attach.id,
+            'url': settings.MEDIA_URL + attach.file.name
+        })
+
+    return JsonResponse({'attachments': uploaded})
+
+@require_POST
+def summernote_delete(request):
+    """Handles delete request when image removed from Summernote."""
+    try:
+        data = json.loads(request.body.decode('utf-8'))
+        print(data)
+    except Exception as e:
+        print(e)
+        return HttpResponseBadRequest('Invalid JSON')
+
+    attach_id = data.get('id')
+    if not attach_id:
+        return HttpResponseBadRequest('Missing id')
+
+    try:
+        attach = Attachment.objects.get(pk=attach_id)
+    except Attachment.DoesNotExist:
+        return JsonResponse({'deleted': False, 'reason': 'not found'})
+
+    # Remove the file from storage
+    if default_storage.exists(attach.file.name):
+        default_storage.delete(attach.file.name)
+    attach.delete()
+
+    return JsonResponse({'deleted': True})
 
 def post_list(request):
     """Display list of blog posts"""

@@ -23,6 +23,7 @@ urlpatterns = [
     
     # Search
     path('search/', views.search_posts, name='search_posts'),
-    
+    path('summernote-upload/', views.summernote_upload, name='summernote_upload'),
+    path('summernote-delete/', views.summernote_delete, name='summernote_delete'),
     path('api/', include('blog.api.urls'))
 ]

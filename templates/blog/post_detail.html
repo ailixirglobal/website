@@ -1,22 +1,27 @@
-{% extends 'blog/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
-<title>{{ post.title }}</title>
+{% block title %}
+{{ post.title }} | {{ post.excerpt }}
+{% endblock title %}
 {% block content %}
-<div class="nk-content">
-  <div class="container-fluid">
-    <div class="nk-content-inner">
-      <div class="nk-content-body">
         <div class="card">
             <div class="card-body">
-                <div class="post-header">
+                <div class="post-header mb-1">
                     <h1 class="post-title">{{ post.title }}</h1>
+                    <p class="">{{ post.excerpt }}</p>
                     <div class="post-meta">
-                        <span><i class="fas fa-user"></i> {{ post.author.username }}</span>
-                        <span><i class="fas fa-calendar"></i> {{ post.created_at|date:"F d, Y" }}</span>
-                        <span><i class="fas fa-eye"></i> {{ post.views_count }} views</span>
-                        <span><i class="fas fa-tag"></i> 
-                            <span class="badge status-{{ post.status }}">{{ post.get_status_display }}</span>
-                        </span>
+                        <span><i class="icon ni ni-user"></i> {{ post.author.username }}</span>
+                        <span><i class="icon ni ni-calendar"></i> {{ post.created_at|date:"F d, Y" }}</span>
+                        <span><i class="icon ni ni-eye"></i> {{ post.views_count }} views</span>
+                    </div>
+                    <div>
+                    {% for social in handles %}
+                      <span class="ml-1">
+                        <a class="text-dark" target="_blank" href="{{ social.url }}">
+                          <i class="icon ni ni-{{ social.icon_class }}">{{ social.name }}</i>
+                        </a>
+                      </span>
+                    {% endfor %}
                     </div>
                     {% if post.category %}
                     <span class="badge bg-primary">{{ post.category.name }}</span>
@@ -27,18 +32,18 @@
                 </div>
 
                 {% if post.featured_image %}
-                <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="post-image">
+                <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" loading='lazy' class="post-image img w-100 h-50">
                 {% endif %}
 
-                <div class="post-content">
-                    {{ post.content|linebreaks }}
+                <div class="post-content mt-2 line-spacing-2">
+                  
+                    {{ post.content|safe }}
                 </div>
             </div>
         </div>
-
         <!-- Comments Section -->
-        <div class="comments-section">
-            <h3 class="mb-4">Comments</h3>
+        <div class="comments-section mt-2">
+            <h3 class="mb-2">Comments</h3>
             
             <!-- Comment Form -->
             <div class="comment-form">
@@ -52,23 +57,26 @@
             </div>
 
             <!-- Comments List -->
-            <div id="comments-list">
+            {% if user.is_authenticated %}
+            <div class="comments-list mt-1">
                 {% for comment in post.comments.all %}
-                <div class="comment-item">
-                    <div class="d-flex justify-content-between">
+                <div class="card border rounded">
+                    <div class="card-header d-flex justify-content-between">
                         <strong class="comment-author">{{ comment.author.username }}</strong>
                         <small class="comment-date">{{ comment.created_at|date:"M d, Y H:i" }}</small>
                     </div>
-                    <p class="mb-0 mt-2">{{ comment.content }}</p>
+                    <p class="card-body mb-0 mt-2">{{ comment.content }}</p>
+                   <div class="card-footer d-flex justify-content-between">
+                     <a href=""><em class="icon ni ni-thumbs-up"></em>0</a>
+                     <a href=""><em class="icon ni ni-thumbs-down"></em>0</a>
+                   </div>
                 </div>
                 {% empty %}
                 <p>No comments yet.</p>
                 {% endfor %}
             </div>
+            {% else %}
+            <p>To comment please Log in <a href="{% url 'account_login' %}">here</a></p>
+            {% endif %}
         </div>
-    </div>
-</div>
-</div>
-</div>
-</div>
 {% endblock content %}
