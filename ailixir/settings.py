@@ -169,7 +169,7 @@ STATICFILES_DIRS = [
 ]
 MEDIA_URL = '/media/'
 if not DEBUG:
-  MEDIA_URL = 'https://media.ailixirglobal.com'
+  MEDIA_URL = 'https://media.ailixirglobal.com/'
 MEDIA_ROOT = 'media'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
