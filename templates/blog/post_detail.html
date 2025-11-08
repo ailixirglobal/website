@@ -3,12 +3,34 @@
 {% block title %}
 {{ post.title }} | {{ post.excerpt }}
 {% endblock title %}
+{% block meta %}
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{{ post.title }}" />
+  <meta property="og:description" content="{{ post.excerpt|truncatewords:30 }}" />
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  {% if post.image %}
+    <meta property="og:image" content="{{ request.build_absolute_uri(post.featured_image.url) }}" />
+  {% else %}
+    <meta property="og:image" content="{{ request.build_absolute_uri }}{% static '/images/logo-light2.png' %}" />
+  {% endif %}
+  <meta property="og:site_name" content="Ailixir Global Limited" />
+
+  <!-- For X (Twitter) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ post.title }}" />
+  <meta name="twitter:description" content="{{ post.excerpt|truncatewords:30 }}" />
+  {% if post.image %}
+    <meta name="twitter:image" content="{{ request.build_absolute_uri(post.featured_image.url) }}" />
+  {% else %}
+    <meta name="twitter:image" content="{{ request.build_absolute_uri }}{% static '/images/logo-light2.png' %}" />
+  {% endif %}
+{% endblock meta %}
 {% block content %}
         <div class="card">
             <div class="card-body">
                 <div class="post-header mb-1">
                     <h1 class="post-title">{{ post.title }}</h1>
-                    <p class="">{{ post.excerpt }}</p>
+                    <p class="fs-5">{{ post.excerpt }}</p>
                     <div class="post-meta">
                         <span><i class="icon ni ni-user"></i> {{ post.author.username }}</span>
                         <span><i class="icon ni ni-calendar"></i> {{ post.created_at|date:"F d, Y" }}</span>
@@ -35,7 +57,7 @@
                 <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" loading='lazy' class="post-image img w-100 h-50">
                 {% endif %}
 
-                <div class="post-content mt-2 line-spacing-2">
+                <div class="post-content mt-2 line-spacing-2 fs-4">
                   
                     {{ post.content|safe }}
                 </div>
