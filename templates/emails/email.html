@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <body style="font-family:Arial, sans-serif; line-height:1.6;">
+    <h2 style="color:#333;">{{ title }}</h2>
+    {% if image %}
+      <img src="{{ image }}" alt="{{ title }}" style="width:100%;max-width:600px;border-radius:8px;">
+    {% endif %}
+    <p>{{ excerpt }}</p>
+    <a href="{{ url }}" style="display:inline-block;background:#007bff;color:#fff;padding:10px 16px;border-radius:6px;text-decoration:none;">Read Full Article</a>
+    <p style="margin-top:20px;color:#888;font-size:12px;">You are receiving this email because you subscribed to Amritanoor Gallery updates.</p>
+  </body>
+</html>

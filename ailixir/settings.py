@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'index',
     'newsletter',
     'blog',
@@ -77,7 +78,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_htmx.middleware.HtmxMiddleware',
     "allauth.account.middleware.AccountMiddleware",
+    'ailixir.middlewares.SiteConfigurationMiddleware',
 ]
+
+SITE_ID = 1
+
 
 ROOT_URLCONF = 'ailixir.urls'
 
@@ -120,7 +125,7 @@ EMAIL_PORT = int(os.getenv('EMAIL_PORT', 587))
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
-
+DEFAULT_FROM_EMAIL = 'Ailixir Global Limited <info@ailixirglobal.com>'
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
@@ -177,7 +182,12 @@ MEDIA_ROOT = 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-
+LOGIN_REDIRECT_URL = '/'
 
 ACCOUNT_LOGIN_BY_CODE_ENABLED = True
 ACCOUNT_LOGIN_METHODS = {"username", "email"}
+ACCOUNT_SIGNUP_FIELDS = ['username', 'email*', 'password1*', 'password2*']
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_SUBJECT_PREFIX = 'Ailixir Global Limited - '
+
