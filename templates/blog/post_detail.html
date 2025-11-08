@@ -9,9 +9,9 @@
   <meta property="og:description" content="{{ post.excerpt|truncatewords:30 }}" />
   <meta property="og:url" content="{{ request.build_absolute_uri }}" />
   {% if post.image %}
-    <meta property="og:image" content="{{ request.build_absolute_uri(post.featured_image.url) }}" />
+    <meta property="og:image" content="{{ post.featured_image.url }}" />
   {% else %}
-    <meta property="og:image" content="{{ request.build_absolute_uri }}{% static '/images/logo-light2.png' %}" />
+    <meta property="og:image" content="{% static '/images/logo-light2.png' %}" />
   {% endif %}
   <meta property="og:site_name" content="Ailixir Global Limited" />
 
@@ -20,13 +20,13 @@
   <meta name="twitter:title" content="{{ post.title }}" />
   <meta name="twitter:description" content="{{ post.excerpt|truncatewords:30 }}" />
   {% if post.image %}
-    <meta name="twitter:image" content="{{ request.build_absolute_uri(post.featured_image.url) }}" />
+    <meta name="twitter:image" content="{{ post.featured_image.url}}" />
   {% else %}
-    <meta name="twitter:image" content="{{ request.build_absolute_uri }}{% static '/images/logo-light2.png' %}" />
+    <meta name="twitter:image" content="{% static '/images/logo-light2.png' %}" />
   {% endif %}
 {% endblock meta %}
 {% block content %}
-        <div class="card">
+        <div class="card p-0">
             <div class="card-body">
                 <div class="post-header mb-1">
                     <h1 class="post-title">{{ post.title }}</h1>
@@ -45,6 +45,13 @@
                       </span>
                     {% endfor %}
                     </div>
+                    <div class="divider"></div>
+                    <div class="mt-2 mb-1 fs-4">
+                      <span class="badge bg-primary p-1" onclick="copyLink()"><i class="icon ni ni-share"></i>Share</span>
+                      <a href="https://api.whatsapp.com/send?text={{ post.title|urlencode }}%20{{ request.build_absolute_uri }}" target="_blank" class="badge bg-success p-1"> <i class="icon ni ni-whatsapp"></i> WhatsApp</a>
+                      <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="badge bg-blue p-1"> <i class="icon ni ni-facebook-f"></i> Facebook</a>
+                      <a href="https://twitter.com/intent/tweet?text={{ post.title|urlencode }}&url={{ request.build_absolute_uri }}" target="_blank" class="badge bg-blue p-1"><i class="icon ni ni-twitter"></i> X (Twitter)</a>
+                    </div>
                     {% if post.category %}
                     <span class="badge bg-primary">{{ post.category.name }}</span>
                     {% endif %}
@@ -57,7 +64,7 @@
                 <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" loading='lazy' class="post-image img w-100 h-50">
                 {% endif %}
 
-                <div class="post-content mt-2 line-spacing-2 fs-4">
+                <div class="post-content mt-2 line-spacing-2 fs-4" style="text-align:justify">
                   
                     {{ post.content|safe }}
                 </div>
@@ -102,3 +109,13 @@
             {% endif %}
         </div>
 {% endblock content %}
+{% block extra_js %}
+<script>
+  function copyLink() {
+    const url = "{{ request.build_absolute_uri }}";
+    navigator.clipboard.writeText(url).then(() => {
+      alert("Post link copied!");
+    });
+  }
+</script>
+{% endblock extra_js %}
