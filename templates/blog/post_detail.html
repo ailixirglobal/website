@@ -19,7 +19,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{{ post.title }}" />
   <meta name="twitter:description" content="{{ post.excerpt|truncatewords:30 }}" />
-  {% if post.image %}
+  {% if post.featured_image %}
     <meta name="twitter:image" content="{{ post.featured_image.url }}" />
   {% else %}
     <meta name="twitter:image" content="{% static '/images/logo-light2.png' %}" />
@@ -36,7 +36,6 @@
                         <span><i class="icon ni ni-calendar"></i> {{ post.created_at|date:"F d, Y" }}</span>
                         <span><i class="icon ni ni-eye"></i> {{ post.views_count }} views</span>
                     </div>
-                    {{ post.featured_image.url }}
                     <div>
                     {% for social in handles %}
                       <span class="ml-1">
